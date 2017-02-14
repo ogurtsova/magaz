@@ -24,8 +24,15 @@ SECRET_KEY = '%(kgq(-%y+h@sodh3f3*ujupu*!62oj8cp5)6hmr*br%lw5!jz'
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
+TEMPLATE_DEBUG = DEBUG
+THUMBNAIL_DEBUG = DEBUG
 
 ALLOWED_HOSTS = []
+
+from django.contrib.messages import constants as messages
+MESSAGE_TAGS = {
+    messages.ERROR: 'danger',
+}
 
 
 # Application definition
@@ -39,6 +46,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'authentication',
     'bootstrap3',
+    'sorl.thumbnail',
 ]
 
 MIDDLEWARE = [

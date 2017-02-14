@@ -49,3 +49,40 @@ class SignUpForm(forms.Form):
         if len(emails) > 0:
             raise forms.ValidationError("This email is already taken")
         return email
+
+class SettingsForm(forms.Form):
+    username = forms.CharField(max_length=128, required=False)
+    password = forms.CharField(widget=forms.PasswordInput)
+    new_password = forms.CharField(widget=forms.PasswordInput, required=False)
+    confirm_password = forms.CharField(widget=forms.PasswordInput, required=False)
+    userpic = forms.FileField(required=False)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
