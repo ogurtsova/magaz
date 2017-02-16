@@ -6,7 +6,8 @@ from django.contrib.auth import authenticate, login, logout
 from django.http import HttpResponse
 from django.contrib import messages
 from django.contrib.auth import update_session_auth_hash
-
+from products.models import Product
+from products.helpers import pagination
 
 
 
@@ -54,6 +55,12 @@ def sign_up(request):
 def sign_out(request):
     logout(request)
     return redirect("/")
+
+def user_page(request, username):
+    page_user = get_object_or_404(User, username=username)
+    products = Product.objects.filter(user=page_user).order_by('-id')
+    page = pagination(request, products, 16)
+    return render(request, 'authentication/user_page.html', locals())
 
 
 def settings(request):

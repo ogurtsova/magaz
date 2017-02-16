@@ -8,13 +8,14 @@
     <div class="row">
         {% for product in page %}
             <div class="col-md-3">
+                <a href="/auth/u/{{ product.user.username }}/">{{ product.user }}</a>
                 {% thumbnail product.image "500x500" crop="center" as im %}
                     <img src="{{ im.url }}" width="{{ im.width }}" height="{{ im.height }}"  class="img-thumbnail">
                 {% endthumbnail %}
 
                 </a>
                 <p>{{ product.description }}</p>
-                <p>{{ product.price }}</p>
+                <p><h4>{{ product.price }}</h4></p>
                 
             </div>
         {% endfor %}
